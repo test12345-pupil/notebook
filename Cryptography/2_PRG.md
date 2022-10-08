@@ -5,12 +5,14 @@ $$\newcommand{\c}[1]{\mathcal{#1}}\newcommand{\Gen}{\textsf{Gen}}\newcommand{\Ra
 
 ## PsuedoRandom Generator
 
-一个函数$G:\{0,1\}^n\to \{0,1\}^{\ell(n)}$是PRG，如果：
+一个确定性函数$G:\{0,1\}^n\to \{0,1\}^{\ell(n)}$是PRG，如果：
 
 - $G$可在多项式时间内求出；
 - $\forall n, \ell(n)>n$；
-- 对任意的PPT（非决定性、多项式时间可计算）distinguisher $D:\{0,1\}^*\to\{0,1\}$，存在函数$\varepsilon(n)=\mathrm{negl}(n)$，使得对于任意$n$有
+- 对任意的PPT（非确定性、多项式时间可计算）distinguisher $D:\{0,1\}^*\to\{0,1\}$，存在函数$\varepsilon(n)=\mathrm{negl}(n)$，使得对于任意$n$有
 $$\left|\Pr_{s\getsr\{0,1\}^n}[D(G(s))=1]-\Pr_{r\getsr\{0,1\}^{\ell(n)}}[D(r)=1]\right|\le \varepsilon(n)$$
+
+> 注意：此时$D$可以任意的调用$G$。
 
 $\mathrm{negl}(n)$是小于任何多项式-1次方的函数
 ![](vx_images/38784622220966.png)

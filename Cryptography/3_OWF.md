@@ -6,10 +6,10 @@ $$\newcommand{\c}[1]{\mathcal{#1}}\newcommand{\Gen}{\textsf{Gen}}\newcommand{\Ra
 ## One-Way Function
 
 
-一个函数$f:\{0,1\}^*\to \{0,1\}^*$是OWF，如果：
+一个确定性非确定性、函数$f:\{0,1\}^*\to \{0,1\}^*$是OWF，如果：
 
 - $f$可在多项式时间内求出（Easy to compute）；
-- $f$难以求逆（Hard to invert）：对任意的PPT（非决定性、多项式时间可计算） inverter $\c{A}$，存在函数$\varepsilon(n)=\mathrm{negl}(n)$，使得
+- $f$难以求逆（Hard to invert）：对任意的PPT inverter $\c{A}$，存在函数$\varepsilon(n)=\mathrm{negl}(n)$，使得
 $$\Pr_{x\leftarrow\{0,1\}^n}[f(\c{A}(f(x)))=f(x)]\le \varepsilon(n)$$
 （注意这里不是$\c{A}(f(x))=x$）
 
