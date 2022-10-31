@@ -6,7 +6,7 @@ $$\newcommand{\c}[1]{\mathcal{#1}}\newcommand{\Gen}{\textsf{Gen}}\newcommand{\Ra
 ## One-Way Function
 
 
-一个确定性非确定性、函数$f:\{0,1\}^*\to \{0,1\}^*$是OWF，如果：
+一个确定性函数$f:\{0,1\}^*\to \{0,1\}^*$是OWF，如果：
 
 - $f$可在多项式时间内求出（Easy to compute）；
 - $f$难以求逆（Hard to invert）：对任意的PPT inverter $\c{A}$，存在函数$\varepsilon(n)=\mathrm{negl}(n)$，使得
@@ -46,6 +46,21 @@ $$
 将$\varepsilon(n)$改为$1-\frac{1}{\mathrm{poly}(n)}$。
 
 有Weak OWF就可以构造出OWF。![](vx_images/149803122227261.png)
+
+### Length-Regular OWF
+
+对于任意$|x_1|=|x_2|$，$|f(x_1)|=|f(x_2)|$。
+
+如果存在OWF，一定存在$p(\cdot)$使得对于所有$x$，有$|f(x)|\le p(|x|)$。加上一个padding，令$f'(x)=f(x)10^{p(|x|)-|f(x)|}$，即可构造出一个Length-Regular OWF。
+
+### Length-Preserving OWF
+
+对于任意$x$，$|f(x)|=|x|$。
+
+利用Length-Regular OWF，也可以构造一个Length-Preserving OWF。注意到，如果有一个L-P OWF $f(\cdot)$，如果有一个super-log多项式$q(n)=\omega(\log n)$，可以构造一个函数$f'(x)=f(x_{1\dots q(n)})$，它只用上了输入的$q(n)$位，但它还是一个OWF，因为$2^{-q(n)}$还是negligible的。（这对于PRG也适用。）
+
+对于L-P OWF，有$\ell(|x|)=f(|x|)$。取$q(\cdot)$使得$q(\ell(|x|))<|x|$，然后加上padding即可。由于$\ell$是多项式，这样的$q$存在。
+
 
 
 证明一个函数是/不是OWF的方法与PRG类似。
